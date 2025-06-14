@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMirror - Reflective AI Journal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#764ba2">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧘‍♂️ MindMirror</h1>
+            <p>Your AI-powered reflective journal for mindful self-discovery</p>
+        </div>
+
+        <div class="offline-indicator" id="offlineIndicator">
+            📱 You're offline - entries will be saved locally and analyzed when you reconnect
+        </div>
+
+        <div class="journal-card">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalEntries">0</div>
+                    <div class="stat-label">Total Entries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="currentStreak">0</div>
+                    <div class="stat-label">Day Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="weeklyEntries">0</div>
+                    <div class="stat-label">This Week</div>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <h3>💭 Share your thoughts, feelings, or experiences</h3>
+                <div class="input-container">
+                    <textarea 
+                        id="journalInput" 
+                        placeholder="How are you feeling today? What's on your mind? Describe your experiences, emotions, or any thoughts you'd like to reflect on..."
+                    ></textarea>
+                    <div class="voice-controls">
+                        <button class="voice-btn" id="voiceBtn">
+                            🎤 Start Voice Input
+                        </button>
+                        <span id="voiceStatus"></span>
+                    </div>
+                </div>
+                <button class="analyze-btn" id="analyzeBtn">
+                    ✨ Reflect with AI
+                </button>
+            </div>
+
+            <div class="results-section" id="resultsSection">
+                <div class="result-card">
+                    <h4>🎯 Summary of Your Feelings</h4>
+                    <p id="summaryResult"></p>
+                </div>
+
+                <div class="result-card">
+                    <h4>🤔 Questions for Reflection</h4>
+                    <ul id="questionsResult"></ul>
+                </div>
+
+                <div class="result-card">
+                    <h4>🌟 Positive Reframing</h4>
+                    <p id="reframingResult"></p>
+                </div>
+
+                <div class="quote-card">
+                    <div class="quote-text" id="quoteText"></div>
+                    <div class="quote-author" id="quoteAuthor"></div>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3>📖 Recent Reflections</h3>
+                <div id="historyContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Register service worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>
