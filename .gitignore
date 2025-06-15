@@ -1,0 +1,16 @@
+# Environment variables and sensitive data
+.env
+config.js
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

@@ -224,7 +224,7 @@ Please respond in JSON format with keys: summary, questions (array), reframing`;
         try {
             // Using Hugging Face API key
             const API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2";
-            const API_KEY = "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";
+            const API_KEY = CONFIG.HUGGINGFACE_API_KEY;
             
             const response = await fetch(API_URL, {
                 method: "POST",
